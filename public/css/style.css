@@ -1,0 +1,426 @@
+/* home page style */
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(253, 208, 149, 0.5); 
+    z-index: -1;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #A55323;
+    font-family: 'Holtwood One SC', serif;
+    font-size: 40px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    z-index: 10;
+}
+.sidebar {
+    position: fixed;
+    top: 80px; /* Adjusted for header height */
+    left: 0;
+    width: 250px;
+    background-color: #F8C68D;
+    padding: 20px;
+    height: calc(100vh - 80px); /* Adjusted for header height */
+    color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+}
+.sidebar h4 {
+    color: black;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+.content-wrapper {
+    margin-top: 80px; /* Adjusted for header height */
+    margin-left: 250px; /* Adjusted for sidebar width */
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Enable scrolling within the main content */
+    height: calc(100vh - 90px); /* Full viewport height minus header height */
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
+.sidebar a {
+    display: block;
+    margin-bottom: 15px;
+    background-color: #A55323;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.sidebar a:hover {
+    background-color: #80401c;
+}
+.sidebar button#logout {
+    margin-top: auto;
+    background-color: #A55323;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sidebar button#logout:hover {
+    background-color: #80401c;
+}
+
+/*member add page style */
+.custom {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    padding: 40px 40px 10px 40px;
+}
+
+.inline-form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 5px; 
+    width: 100%; 
+}
+.form-label {
+    font-family: 'Arial', sans-serif;
+    min-width: 120px; 
+    text-align: left; 
+    font-size: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.form-control {
+    border-radius: 15px;
+    border: 3px solid #E7B342;
+    max-width: 1100px; 
+}
+.btn-custom {
+    background-color: #A75623;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 5px;
+    width: auto;
+}
+.btn-custom:hover {
+    background-color: #f58129;
+}
+.not-required {
+    border-radius: 15px;
+    border: 3px solid #080807;
+    align-content: flex-start;
+    padding: 30px;
+}
+.inline-group {
+    display: flex;
+    align-items: left;
+    justify-content: flex-start;
+    gap: 20px;  
+    width: 100%; 
+}
+.requir-label {
+    font-family: 'Arial', sans-serif;
+    min-width: 30px; 
+    text-align: left; 
+    font-size: 20px;
+}
+.requir-control {
+    border-radius: 10px;
+    border: 3px solid #E7B342;
+    flex: 1; 
+    inset-inline-start: 20px;
+    max-width: 500px;
+}
+.form-role {
+    border-radius: 10px;
+    border: 3px solid #E7B342;
+    flex: 1; 
+}
+.btn-add {
+    background-color: #A75623;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Center the text within the button */
+    margin: 0 10px;
+    width: auto;
+}
+.btn-add:hover {
+    background-color: #f58129;
+}
+.btn-back {
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    justify-self: flex-start;
+}
+/*notification box */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Dark semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    animation: slideDown 0.4s ease-out;
+}
+.success-tick {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+.caution {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+.modal-content p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745; 
+    margin-top: 10px;
+}
+
+.modal-content p1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d41e09; 
+    margin-top: 10px;
+}
+
+/* Add slide-down animation */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* view member page css */
+.dashboard-container {
+    background-size: cover;
+    background-position: center;
+    max-width: 1100px;
+    margin: auto;
+    background-color: #f8f5f0;
+    height: 100%;
+}
+.search-bar input {
+    width: 200px;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.search-button {
+    padding: 0.5rem;
+    background-color: #d98c47;
+    color: #fff;
+    border-radius: 0 0.375rem 0.375rem 0;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #b0733c;
+}
+
+.data-table {
+    background-color: #ffd79e;
+    overflow-y: auto;
+    max-height: 400px; /* Adjust based on desired scrollable height */
+    border-radius: 1rem;
+    width: full;
+}
+
+.table-header {
+    background-color: #ffd79e;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    width: fit-content;
+}
+
+.table-body {
+    background-color: #f9e6cd;
+    width: fit-content;
+}
+.table-data-member {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    text-align: center;
+    color: #2d3748;
+    border-bottom: 1px solid #ddd;
+}
+.table-data-book {
+    padding: 0.5rem 2.5rem 0.5rem 2.43rem;
+    text-align: center;
+    color: #2d3748;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-data-history {
+    padding: 0.5rem 4rem 0.5rem 4rem;
+    text-align: center;
+    color: #2d3748;
+    border-bottom: 1px solid #ddd;
+}
+
+.action-buttons a,
+.action-buttons button {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.action-buttons a:hover,
+.action-buttons button:hover {
+    background-color: #b0733c;
+}
+
+.no-data {
+    text-align: center;
+    padding: 1rem;
+    color: #6b7280;
+}
+.inline-group {
+    gap: 10px; /* Optional, adds space between buttons */
+    align-items: center;
+}
+
+/* Common button styles */
+.inline-group a {
+    background-color: #A75623;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.inline-group a:hover {
+    background-color: #f58129;
+}
+
+/* Specific alignment */
+.btn {
+    margin-right: auto; /* Pushes the element to the left */
+}
+
+.add-member-button {
+    margin: 0 10px;
+    width: auto; /* Pushes the element to the right */
+}
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.custom-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #703d07;
+}
+.custom-btn:hover {
+    background-color: #f58129;
+}
+.btn-filter {
+    background-color: #74340d;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+.card-body {
+    background-color: #74340d;
+    border-radius: 15px;
+}
+.card {
+    background-color: #74340d;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.list-group-item {
+    background-color: #f8a363;
+}
