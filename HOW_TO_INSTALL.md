@@ -1,4 +1,4 @@
-                                                        # Library Management System
+# Library Management System
 
 ## How to install the system to your computer from repository
 
@@ -50,4 +50,4 @@
      #### user name : lib@example.com
      #### password : 12345678
 
-                                                                     # Thank You
+# Thank You
