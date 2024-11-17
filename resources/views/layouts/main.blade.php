@@ -99,7 +99,7 @@
             document.getElementById('logout-confirmation-modal').style.display = 'none'; // Hide modal
         });
 
-        //success notification
+        // notification
         function closeModal() {
                 document.querySelector('.modal-overlay').style.display = 'none';
             }

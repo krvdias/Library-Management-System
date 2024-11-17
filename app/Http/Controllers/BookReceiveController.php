@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Book_Borrow;
 use App\Models\Book_Receive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,12 @@ class BookReceiveController extends Controller
             'user_id' => 'required|integer',
             'book_id' => 'required|integer',
         ]);
+
+        $barrowed = Book_Borrow::where('user_id', $request->user_id)->find($request->book_id);
+
+        if ($barrowed == false) {
+            return redirect()->route('collectbook')->with('error', "Book didn't barrowed");
+        } 
 
         Book_Receive::create([
             'user_id' => $request->user_id,

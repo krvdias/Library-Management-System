@@ -87,9 +87,19 @@
     <div class="login-container">
         <form method="POST" action="{{route('user.logIn')}}" class="form">
         @csrf
+            <div class="form-error text-center">
+                @error('email')
+                    <div class="text-black fw-bold">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="mb-3 inline-form-group">
-                <label for="username" class="form-label">User Name :</label>
-                <input type="text" name="email" class="form-control" id="username" placeholder="Enter Name">
+                <label for="useremail" class="form-label">User Email :</label>
+                <input type="text" name="email" class="form-control" id="useremail" placeholder="Enter Email">
+            </div>
+            <div class="form-error text-center">
+                @error('password')
+                    <div class="text-black fw-bold">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3 inline-form-group">
                 <label for="password" class="form-label">Password :</label>

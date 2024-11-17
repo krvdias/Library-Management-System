@@ -13,7 +13,7 @@ class LoginController extends Controller
 
         $request->validate([
             'email' => 'required|string|email',
-            'password' => 'required|string|8',
+            'password' => 'required|string|min:8',
         ]);
 
         //check insert email user

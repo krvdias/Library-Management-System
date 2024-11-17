@@ -16,7 +16,7 @@ class MemberController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'mobile' => 'required|integer|max:15',
+            'mobile' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'role' => 'nullable|string|in:admin,member', 
             'password' => 'nullable|string|min:8', 
@@ -97,7 +97,7 @@ class MemberController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'mobile' => 'required|integer|max:15',
+            'mobile' => 'required|string|max:15',
             'address' => 'required|string|max:255',
             'role' => 'nullable|string|in:admin,member',
             'password' => 'nullable|string|min:8', 
