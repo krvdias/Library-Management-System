@@ -10,17 +10,19 @@ use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
+    //add new member 
     public function add(Request $request) {
 
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'mobile' => 'required|string|max:15',
+            'mobile' => 'required|integer|max:15',
             'address' => 'required|string|max:255',
             'role' => 'nullable|string|in:admin,member', 
             'password' => 'nullable|string|min:8', 
         ]);
 
+        //if he is member role and password add default values
         $validated['role'] = $validated['role'] ?? 'member';
         $validated['password'] = $validated['password'] ?? '12345678';    
 
@@ -45,28 +47,34 @@ class MemberController extends Controller
         return redirect()->route('addmember')->with('success', 'Member added successfully!');
     }
 
+    //pass all the users in users table
     public function index()
     {
-        $members = User::where('id','!=','1')->get(); // Fetch all members
+        $members = User::all(); // Fetch all members
         return view('viewmember', compact('members'));
     }
 
     // Delete a member
     public function destroy($id)
     {
+        //if delete default admin, block it
+        if ($id == 1) {
+            return redirect()->route('members.index')->with('error', 'Cannot Delete');
+        }
+
         $user = User::findOrFail($id);
         $user->delete();
 
         return redirect()->route('members.index')->with('success', 'Member deleted successfully!');
     }
 
+    //search member eccordin to name , email and mobile
     public function search(Request $request)
     {
         $query = $request->input('search');
 
         // Retrieve users whose name, email, or phone contains the search query
-        $members = User::where('id','!=','1')
-                    ->orwhere('name', 'LIKE', '%' . $query . '%')
+        $members = User::where('name', 'LIKE', '%' . $query . '%')
                     ->orWhere('email', 'LIKE', '%' . $query . '%')
                     ->orWhere('mobile', 'LIKE', '%' . $query . '%')
                     ->get();
@@ -75,6 +83,7 @@ class MemberController extends Controller
         return response()->view('viewmember',compact('members'));
     }
 
+    //show member info according to user_id
     public function edit($id) 
     {
         $member = User::findOrFail($id); 
@@ -82,12 +91,13 @@ class MemberController extends Controller
         return view('editmember', compact('member'));
     }
 
+    //update member info
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'mobile' => 'required|string|max:15',
+            'mobile' => 'required|integer|max:15',
             'address' => 'required|string|max:255',
             'role' => 'nullable|string|in:admin,member',
             'password' => 'nullable|string|min:8', 

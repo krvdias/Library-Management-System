@@ -37,7 +37,7 @@
             </div>
             <div class="mb-3 inline-form-group">
                 <label for="mobile" class="form-label">Mobile :</label>
-                <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Enter Mobile No" required>
+                <input type="text" name="mobile" class="form-control" id="mobile" placeholder="07XXXXXXXX" required>
             </div>
 
             <div class="form-error text-center">

@@ -56,6 +56,7 @@
             </div>
             @endif
 
+            <!-- error notification model -->
             @if(session('error'))
             <div class="modal-overlay">
                 <div class="modal-content">

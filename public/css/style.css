@@ -315,7 +315,13 @@ body::before {
     width: fit-content;
 }
 .table-data-member {
-    padding: 0.5rem 2rem 0.5rem 2rem;
+    padding: 0.5rem 0.2rem 0.5rem 0.2rem;
+    text-align: center;
+    color: #2d3748;
+    border-bottom: 1px solid #ddd;
+}
+.table-data-member#member {
+    padding: 0.5rem 3rem 0.5rem 3rem;
     text-align: center;
     color: #2d3748;
     border-bottom: 1px solid #ddd;

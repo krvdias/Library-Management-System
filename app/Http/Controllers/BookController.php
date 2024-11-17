@@ -8,6 +8,7 @@ use App\Events\NewNotification;
 
 class BookController extends Controller
 {
+    // adding new book
     public function add(Request $request) {
 
         $request->validate([
@@ -15,10 +16,12 @@ class BookController extends Controller
             'category' => 'required|string',
             'title' => 'required|string|max:15',
             'author' => 'required|string|max:255',
-            'copies' => 'nullable|string', 
+            'copies' => 'nullable|integer', 
         ]);
 
-        if ($request->copies < 1) {
+        //if book count is less than 1 availability 'empty'
+        $copies = $request->copies;
+        if ($copies < 1) {
             $status = 'empty';
         } else {
             $status = 'available';
@@ -36,24 +39,28 @@ class BookController extends Controller
         return redirect()->route('addbook')->with('success', 'Book added successfully!');
     }
 
+    //get all the books in books table
     public function index()
     {
         $books = Book::all(); // Fetch all books
         return view('viewbook', compact('books'));
     }
 
+    //get all books availability == 'available'
     public function available()
     {
         $books = Book::where('availability','available')->get(); 
         return view('viewbook', compact('books'));
     }
 
+    //get all books availability == 'empty'
     public function empty()
     {
         $books = Book::where('availability','empty')->get();
         return view('viewbook', compact('books'));
     }
 
+    //get book details according to book_id
     public function view($id)
     {
         $book = Book::where('id',$id)->first();
@@ -61,6 +68,7 @@ class BookController extends Controller
         return view('showbook', compact('book'));
     }
 
+    //updating book details
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -68,7 +76,7 @@ class BookController extends Controller
             'category' => 'required|string',
             'title' => 'required|string|max:15',
             'author' => 'required|string|max:255',
-            'copies' => 'nullable|string', 
+            'copies' => 'nullable|integer', 
         ]);
 
         $book = Book::findOrFail($id);
@@ -102,6 +110,7 @@ class BookController extends Controller
         return redirect()->route('books.index')->with('success', 'Book deleted successfully!');
     }
 
+    //search book according to ISBN, title and author
     public function search(Request $request)
     {
         $query = $request->input('search');

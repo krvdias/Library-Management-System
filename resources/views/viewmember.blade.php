@@ -34,13 +34,13 @@
             <table class=" divide-y divide-brown-200 bg-white rounded-lg shadow-lg">
                 <thead class="table-header">
                     <tr>
-                        <th class="table-data-member">ID</th>
-                        <th class="table-data-member">Name</th>
-                        <th class="table-data-member">Email</th>
-                        <th class="table-data-member">Phone</th>
-                        <th class="table-data-member">Address</th>
-                        <th class="table-data-member">Role</th>
-                        <th class="table-data-member">Register Date</th>
+                        <th id="member" class="table-data-member">ID</th>
+                        <th id="member" class="table-data-member">Name</th>
+                        <th id="member" class="table-data-member">Email</th>
+                        <th id="member" class="table-data-member">Phone</th>
+                        <th id="member" class="table-data-member">Address</th>
+                        <th id="member" class="table-data-member">Role</th>
+                        <th id="member" class="table-data-member">Register Date</th>
                         <th class="table-data-member" >Action</th>
                     </tr>
                 </thead>

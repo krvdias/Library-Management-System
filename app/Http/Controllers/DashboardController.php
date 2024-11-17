@@ -9,6 +9,7 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
+    //send the data to home page cards
     public function index()
     {
         // Fetch data for the dashboard summary
@@ -16,6 +17,7 @@ class DashboardController extends Controller
         $totalBooks = Book::count();
         $availableBooks = Book::where('availability', 'available')->count();
 
+        //get the book copies count of all the books
         $allBookCopies = Book::pluck('copies');
         $totalCopies = 0;
 

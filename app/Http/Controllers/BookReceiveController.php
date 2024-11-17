@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class BookReceiveController extends Controller
 {
+    //mark return books according to book_id and user_id
     public function collect(Request $request)
     {
         $request->validate([
@@ -22,6 +23,7 @@ class BookReceiveController extends Controller
             'return_date' => DB::raw('CURRENT_DATE'),
         ]);
         
+        //after recive book book copy count increase by 1
         $book = Book::findOrFail($request->book_id);
         $bookCopies = $book->copies + 1;
         
@@ -39,6 +41,7 @@ class BookReceiveController extends Controller
         return redirect()->route('collectbook')->with('success', 'Book collected successfully!');
     }
 
+    //table join and preview book barrow and recive history with user name , book title and ISBN
     public function index()
     {
         $books = Book::with([
@@ -68,15 +71,18 @@ class BookReceiveController extends Controller
         return view('barrowhistory', compact('booksData'));
     }
 
+    //search that history book according to ISBN, title and name
     public function search(Request $request)
     {
         $query = $request->input('search');
 
-        // Search for books based on ISBN (and optionally Title or Author)
+        // Search for books based on ISBN (and optionally Title or name)
         $booksData = Book::with(['book_borrow.user', 'book_receive.user'])
             ->where('ISBN', 'like', "%{$query}%")
             ->orWhere('title', 'like', "%{$query}%")
-            ->orWhere('author', 'like', "%{$query}%")
+            ->orWhereHas('book_receive.user', function ($q) use ($query) {
+                $q->where('name', 'like', "%{$query}%");
+            })
             ->get()
             ->map(function ($book) {
                 return [
